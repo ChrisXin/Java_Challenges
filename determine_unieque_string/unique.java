@@ -1,22 +1,28 @@
-public static boolean isUniqueChars2(String str) {
-  
-  // create an array of boolean values
-  boolean[] char_set = new boolean[256];
-  
-  // iterate through the string
-   for (int i = 0; i < str.length(); i++) {
-    
-    // check whether i-th character is in this string, store the integer (1 or 0) in val.  (this is O(1))
-    int val = str.charAt(i);
-    
-    if ((char_set[val]) == false){
-      char_set[val] = true;
-      }
-    else{
-     return false 
-    }
-      
-    // jump out and the string contains unique characters
-    return true;
- }
+public class CharUnique2{
+
+	public static void main(String[] args){
+
+		String str = "abcdefghijklmn";
+		CharUnique uc = new CharUnique();
+		boolean result = uc.checkUnique(str);
+		if(result)
+			System.out.println("String has all unique characters");
+		else
+			System.out.println("String does not have all unique characters");
+	}
+
+	public boolean checkUnique(String str){
+
+		boolean[] strSet = new boolean[256];//boolean array representing each character in char set
+
+		for(int i = 0; i<str.length(); i++){
+
+			int val = str.charAt(i);//we assign a character to an int so its ASCII value gets stored..!
+			if(strSet[val]){ //if its already true
+				return false; //we have a duplicate
+			}
+			strSet[val] = true; //set boolean value representing that character to be true
+		}
+		return true; // all characters in string was unique..!
+	}
 }
